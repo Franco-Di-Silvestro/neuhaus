@@ -40,6 +40,11 @@
   --sidebar-ring: oklch(0.55 0.08 165); /* Green sidebar ring */
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+
 .whatsapp-float {
   position: fixed;
   width: 60px;
