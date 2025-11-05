@@ -18,6 +18,7 @@ import {
 import type { Project } from "@/lib/projects"
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Image from "next/image"
 
 interface ProjectDetailsClientProps {
   project: Project
@@ -42,7 +43,17 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                 Volver a Proyectos
               </Button>
             </Link>
-            <div className="text-xl font-bold text-white">Neuhaus Real Estate</div>
+
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Image
+                src="/logo.png" // ajustá la ruta según tu estructura
+                alt="Neuhaus Real Estate"
+                width={160}
+                height={40}
+                className="object-contain h-10 w-auto"
+              />
+            </div>
           </div>
         </div>
       </nav>
@@ -77,8 +88,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${index === currentImageIndex ? "bg-white" : "bg-white/50"
-                      }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentImageIndex ? "bg-white" : "bg-white/50"
+                    }`}
                   />
                 ))}
               </div>
@@ -111,7 +123,6 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
             {/* Tabs Section (Left Side) */}
             <div className="lg:col-span-2">
               <Tabs defaultValue="resumen" className="text-white">
-                {/* Barra blanca */}
                 <TabsList className="bg-white mb-6 rounded-xl p-1">
                   <TabsTrigger
                     value="resumen"
@@ -159,19 +170,13 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                     <h3 className="text-2xl font-bold text-white">Brochure del Proyecto</h3>
 
                     {project.details?.brochure ? (
-                      <a
-                        href={project.details.brochure}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={project.details.brochure} target="_blank" rel="noopener noreferrer">
                         <Button className="bg-white text-primary hover:bg-emerald-700 hover:text-white cursor-pointer">
                           Ver Brochure
                         </Button>
                       </a>
                     ) : (
-                      <p className="text-gray-300 italic">
-                        Este proyecto aún no tiene brochure disponible.
-                      </p>
+                      <p className="text-gray-300 italic">Este proyecto aún no tiene brochure disponible.</p>
                     )}
                   </div>
                 </TabsContent>
@@ -184,7 +189,6 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                   <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
                 </TabsContent>
               </Tabs>
-
             </div>
 
             {/* Sidebar (Right Side) */}
