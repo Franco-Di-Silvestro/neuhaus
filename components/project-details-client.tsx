@@ -4,9 +4,20 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, MapPin, Calendar, User, Ruler, ChevronLeft, ChevronRight, Layers2, Key, BookmarkPlus } from "lucide-react"
+import {
+  ArrowLeft,
+  MapPin,
+  Calendar,
+  Ruler,
+  ChevronLeft,
+  ChevronRight,
+  Layers2,
+  Key,
+  BookmarkPlus,
+} from "lucide-react"
 import type { Project } from "@/lib/projects"
 import Link from "next/link"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface ProjectDetailsClientProps {
   project: Project
@@ -16,22 +27,17 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const gallery = project.details?.gallery || [project.image]
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % gallery.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length)
-  }
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % gallery.length)
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + gallery.length) % gallery.length)
 
   return (
     <div className="min-h-screen bg-primary text-white">
       {/* Navigation */}
-      <nav className="bg-emerald-800 border-b border-green-700">
+      <nav className="bg-primary border-b border-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/#projects">
-              <Button variant="ghost" className="text-green-200 hover:text-white">
+              <Button variant="ghost" className="text-white hover:text-white">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Volver a Proyectos
               </Button>
@@ -51,7 +57,6 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
           />
           <div className="absolute inset-0 bg-black/40"></div>
 
-          {/* Gallery Navigation */}
           {gallery.length > 1 && (
             <>
               <button
@@ -67,7 +72,6 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                 <ChevronRight className="h-6 w-6" />
               </button>
 
-              {/* Image Indicators */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {gallery.map((_, index) => (
                   <button
@@ -105,32 +109,66 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
+            {/* Tabs Section (Left Side) */}
             <div className="lg:col-span-2">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-white mb-4">Descripción del Proyecto</h2>
-                <p className="text-lg text-green-200 leading-relaxed">
-                  {project.details?.description || project.description}
-                </p>
-              </div>
+              <Tabs defaultValue="resumen" className="text-white">
+  {/* Barra blanca */}
+  <TabsList className="bg-white mb-6 rounded-xl p-1">
+    <TabsTrigger
+      value="resumen"
+      className="data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+    >
+      Resumen
+    </TabsTrigger>
+    <TabsTrigger
+      value="tipologias"
+      className="data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+    >
+      Tipologías
+    </TabsTrigger>
+    <TabsTrigger
+      value="amenities"
+      className="data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+    >
+      Amenities
+    </TabsTrigger>
+  </TabsList>
 
-              {/* Features */}
-              {project.details?.features && (
-                <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-4">Características Principales</h3>
-                  <ul className="space-y-2">
-                    {project.details.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-green-200">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+  <TabsContent value="resumen">
+    <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-white mb-4">Descripción del Proyecto</h2>
+                    <p className="text-lg text-green-200 leading-relaxed">
+                      {project.details?.description || project.description}
+                    </p>
+                  </div>
+
+                  {project.details?.features && (
+                    <div className="mb-8">
+                      <h3 className="text-2xl font-bold text-white mb-4">Características Principales</h3>
+                      <ul className="space-y-2">
+                        {project.details.features.map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <span className="text-green-200">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+  </TabsContent>
+
+  <TabsContent value="tipologias">
+    <div className="text-green-200 italic">Contenido de tipologías próximamente...</div>
+  </TabsContent>
+
+  <TabsContent value="amenities">
+    <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
+  </TabsContent>
+</Tabs>
+
             </div>
 
-            {/* Project Info Sidebar */}
+            {/* Sidebar (Right Side) */}
             <div className="lg:col-span-1">
               <Card className="bg-emerald-800 border-green-700">
                 <CardContent className="p-6">
@@ -156,7 +194,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                         </div>
                       </div>
                     )}
-                    
+
                     {project.details?.stories && (
                       <div className="flex items-start">
                         <Layers2 className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
@@ -166,7 +204,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                         </div>
                       </div>
                     )}
-                    
+
                     {project.details?.units && (
                       <div className="flex items-start">
                         <Key className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
@@ -176,7 +214,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                         </div>
                       </div>
                     )}
-                                      
+
                     {project.details?.amenities && (
                       <div className="flex items-start">
                         <BookmarkPlus className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
@@ -184,7 +222,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                           <div className="text-sm text-green-300">Amenities</div>
                           <ul>
                             {project.details.amenities.map((a, index) => (
-                              <li className="text-white" key={index}>{a}</li>
+                              <li className="text-white" key={index}>
+                                {a}
+                              </li>
                             ))}
                           </ul>
                         </div>
