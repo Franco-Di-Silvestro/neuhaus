@@ -15,6 +15,7 @@ export interface Project {
     stories: string
     units: string
     amenities: string[]
+    brochure?: string
   }
 }
 
@@ -37,7 +38,8 @@ export const projects: Project[] = [
         "Un edificio residencial de diseño contemporáneo implantado en la mejor zona de Caballito, a metros de Pedro Goyena y a tres cuadras del Parque Chacabuco.",
       stories: "15",
       units: "45",
-      amenities: ["SUM interior", "SUM exterior con parrilla", "Cowork", "Laundry"]
+      amenities: ["SUM interior", "SUM exterior con parrilla", "Cowork", "Laundry"],
+      brochure: "/brochures/brochure.pdf"
     },
   },
   {
@@ -57,7 +59,8 @@ export const projects: Project[] = [
         "El edificio combina calidad y bienestar en cada detalle, con ambientes luminosos, materiales nobles y un diseño pensado para la vida cotidiana.",
       stories: "12",
       units: "24",
-      amenities: ["SUM con parrilla"]
+      amenities: ["SUM con parrilla"],
+      brochure: "/brochures/brochure.pdf"
     },
   },
   {
@@ -77,7 +80,8 @@ export const projects: Project[] = [
         "Ubicado en una esquina estratégica, ofrece el equilibrio justo entre confort, conectividad y la tranquilidad de un barrio con identidad.",
       stories: "12",
       units: "33",
-      amenities: ["Coliving", "Meeting room", "Rooftop con parrilleros", "Lockers privados"]
+      amenities: ["Coliving", "Meeting room", "Rooftop con parrilleros", "Lockers privados"],
+      brochure: "/brochures/brochure.pdf"
     },
   },
 ]
