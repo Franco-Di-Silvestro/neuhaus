@@ -131,12 +131,6 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                   >
                     Amenities
                   </TabsTrigger>
-                  <TabsTrigger
-                    value="brochure"
-                    className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
-                  >
-                    Brochure
-                  </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="resumen">
@@ -160,17 +154,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                       </ul>
                     </div>
                   )}
-                </TabsContent>
 
-                <TabsContent value="tipologias">
-                  <div className="text-green-200 italic">Contenido de tipologías próximamente...</div>
-                </TabsContent>
-
-                <TabsContent value="amenities">
-                  <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
-                </TabsContent>
-
-                <TabsContent value="brochure">
                   <div className="flex flex-col items-start gap-4">
                     <h3 className="text-2xl font-bold text-white">Brochure del Proyecto</h3>
 
@@ -190,6 +174,14 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                       </p>
                     )}
                   </div>
+                </TabsContent>
+
+                <TabsContent value="tipologias">
+                  <div className="text-green-200 italic">Contenido de tipologías próximamente...</div>
+                </TabsContent>
+
+                <TabsContent value="amenities">
+                  <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
                 </TabsContent>
               </Tabs>
 
