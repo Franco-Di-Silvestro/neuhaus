@@ -16,6 +16,10 @@ export interface Project {
     units: string
     amenities: string[]
     brochure?: string
+    typologies?: {
+      title: string
+      image: string
+    }[]
   }
 }
 
@@ -24,7 +28,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Neuhaus Centenera 740",
     description:
-        "Un edificio residencial de diseño contemporáneo implantado en la mejor zona de Caballito, a metros de Pedro Goyena y a tres cuadras del Parque Chacabuco.",
+      "Un edificio residencial de diseño contemporáneo implantado en la mejor zona de Caballito, a metros de Pedro Goyena y a tres cuadras del Parque Chacabuco.",
     image: "/CenteneraFrente.jpeg",
     category: "Residencial",
     year: "2022 - 2025",
@@ -39,7 +43,17 @@ export const projects: Project[] = [
       stories: "15",
       units: "45",
       amenities: ["SUM interior", "SUM exterior con parrilla", "Cowork", "Laundry"],
-      brochure: "/brochures/brochure.pdf"
+      brochure: "/brochures/brochure.pdf",
+      typologies: [
+        {
+          title: "Departamento de 2 ambientes",
+          image: "/tipologias/2amb.jpg"
+        },
+        {
+          title: "Departamento de 3 ambientes",
+          image: "/tipologias/3amb.jpg"
+        }
+      ]
     },
   },
   {
@@ -60,7 +74,17 @@ export const projects: Project[] = [
       stories: "12",
       units: "24",
       amenities: ["SUM con parrilla"],
-      brochure: "/brochures/brochure.pdf"
+      brochure: "/brochures/brochure.pdf",
+      typologies: [
+        {
+          title: "Departamento de 2 ambientes",
+          image: "/tipologias/2amb.jpg"
+        },
+        {
+          title: "Departamento de 3 ambientes",
+          image: "/tipologias/3amb.jpg"
+        }
+      ]
     },
   },
   {
@@ -81,7 +105,17 @@ export const projects: Project[] = [
       stories: "12",
       units: "33",
       amenities: ["Coliving", "Meeting room", "Rooftop con parrilleros", "Lockers privados"],
-      brochure: "/brochures/brochure.pdf"
+      brochure: "/brochures/brochure.pdf",
+      typologies: [
+        {
+          title: "Departamento de 2 ambientes",
+          image: "/tipologias/2amb.jpg"
+        },
+        {
+          title: "Departamento de 3 ambientes",
+          image: "/tipologias/3amb.jpg"
+        }
+      ]
     },
   },
 ]

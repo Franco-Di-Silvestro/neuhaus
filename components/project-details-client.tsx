@@ -88,9 +88,8 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentImageIndex ? "bg-white" : "bg-white/50"
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${index === currentImageIndex ? "bg-white" : "bg-white/50"
+                      }`}
                   />
                 ))}
               </div>
@@ -182,8 +181,26 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                 </TabsContent>
 
                 <TabsContent value="tipologias">
-                  <div className="text-green-200 italic">Contenido de tipologías próximamente...</div>
+                  {project.details?.typologies && project.details.typologies.length > 0 ? (
+                    <div className="space-y-8">
+                      {project.details.typologies.map((typology, index) => (
+                        <div key={index} className="flex flex-col items-start gap-4">
+                          <h3 className="text-2xl font-bold text-white">{typology.title}</h3>
+                          <div className="w-full overflow-hidden rounded-xl">
+                            <img
+                              src={typology.image}
+                              alt={typology.title}
+                              className="w-full h-auto object-cover rounded-xl shadow-lg"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-green-200 italic">Este proyecto aún no tiene tipologías disponibles.</div>
+                  )}
                 </TabsContent>
+
 
                 <TabsContent value="amenities">
                   <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
