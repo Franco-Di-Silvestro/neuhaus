@@ -16,7 +16,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (<><ProjectDetailsClient project={project} /><a
-        href="https://wa.me/5491150132222?text=¡Hola!%20Quisiera%20más%20información."
+        href={"https://wa.me/5491150132222?text=¡Hola!%20Quisiera%20más%20información sobre " + project.title}
         className="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
