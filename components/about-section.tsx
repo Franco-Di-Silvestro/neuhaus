@@ -56,17 +56,18 @@ export function AboutSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-4 md:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full mb-4">
-                <stat.icon className="h-8 w-8 text-accent-foreground" />
-              </div>
-              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-muted-foreground">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+  {stats.map((stat, index) => (
+    <div key={index} className="text-center">
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-accent rounded-full mb-4">
+        <stat.icon className="h-8 w-8 text-accent-foreground" />
+      </div>
+      <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+      <div className="text-muted-foreground">{stat.label}</div>
+    </div>
+  ))}
+</div>
+
 
         {/* Philosophy Section */}
         <div className="mb-16">
