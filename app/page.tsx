@@ -12,7 +12,7 @@ export default function Home() {
       <HeroSection />
       <ProjectsSection />
       <AboutSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
       <Footer />
       <a
         href="https://wa.me/5491150132222?text=¡Hola!%20Quisiera%20más%20información."
