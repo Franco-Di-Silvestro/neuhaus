@@ -185,11 +185,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                     <div className="space-y-8">
                       {project.details.typologies.map((typology, index) => (
                         <div key={index} className="flex flex-col items-start gap-4">
-                          <h3 className="text-2xl font-bold text-white">{typology.title}</h3>
                           <div className="w-full overflow-hidden rounded-xl">
                             <img
                               src={typology.image}
-                              alt={typology.title}
                               className="w-full h-auto object-cover rounded-xl shadow-lg"
                             />
                           </div>

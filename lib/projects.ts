@@ -17,7 +17,6 @@ export interface Project {
     amenities: string[]
     brochure?: string
     typologies?: {
-      title: string
       image: string
     }[]
   }
@@ -46,11 +45,9 @@ export const projects: Project[] = [
       brochure: "/brochures/brochure.pdf",
       typologies: [
         {
-          title: "Departamento de 2 ambientes",
           image: "/tipologias/2amb.jpg"
         },
         {
-          title: "Departamento de 3 ambientes",
           image: "/tipologias/3amb.jpg"
         }
       ]
@@ -77,12 +74,16 @@ export const projects: Project[] = [
       brochure: "/brochures/brochure.pdf",
       typologies: [
         {
-          title: "Departamento de 2 ambientes",
-          image: "/tipologias/2amb.jpg"
+          image: "/tipologias/Dir-1290/DIR1290- tipología 1.jpg"
         },
         {
-          title: "Departamento de 3 ambientes",
-          image: "/tipologias/3amb.jpg"
+          image: "/tipologias/Dir-1290/DIR1290- tipología 2.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1290/DIR1290- tipología 3.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1290/DIR1290- tipología 4.jpg"
         }
       ]
     },
@@ -108,12 +109,22 @@ export const projects: Project[] = [
       brochure: "/brochures/brochure.pdf",
       typologies: [
         {
-          title: "Departamento de 2 ambientes",
-          image: "/tipologias/2amb.jpg"
+          image: "/tipologias/Dir-1302/DIR1302- tipología 1.jpg"
         },
         {
-          title: "Departamento de 3 ambientes",
-          image: "/tipologias/3amb.jpg"
+          image: "/tipologias/Dir-1302/DIR1302- tipología 2.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1302/DIR1302- tipología 3.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1302/DIR1302- tipología 4.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1302/DIR1302- tipología 5.jpg"
+        },
+        {
+          image: "/tipologias/Dir-1302/DIR1302- tipología 6.jpg"
         }
       ]
     },
