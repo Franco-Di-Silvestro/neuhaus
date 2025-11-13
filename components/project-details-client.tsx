@@ -151,7 +151,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                     </p>
                   </div>
 
-                  {project.details?.features && (
+                  {/* {project.details?.features && (
                     <div className="mb-8">
                       <h3 className="text-2xl font-bold text-white mb-4">Características Principales</h3>
                       <ul className="space-y-2">
@@ -163,7 +163,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                         ))}
                       </ul>
                     </div>
-                  )}
+                  )} */}
 
                   <div className="flex flex-col items-start gap-4">
                     <h3 className="text-2xl font-bold text-white">Brochure del Proyecto</h3>
@@ -227,7 +227,7 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                       <div className="flex items-start">
                         <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
                         <div>
-                          <div className="text-sm text-green-300">Área</div>
+                          <div className="text-sm text-green-300">Superficie total</div>
                           <div className="text-white">{project.details.area}</div>
                         </div>
                       </div>
@@ -249,6 +249,16 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                         <div>
                           <div className="text-sm text-green-300">Unidades</div>
                           <div className="text-white">{project.details.units}</div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {project.details?.typologyTypes && (
+                      <div className="flex items-start">
+                        <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                        <div>
+                          <div className="text-sm text-green-300">Tipologias</div>
+                          <div className="text-white">{project.details.typologyTypes}</div>
                         </div>
                       </div>
                     )}

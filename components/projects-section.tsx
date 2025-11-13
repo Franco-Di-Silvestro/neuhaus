@@ -4,41 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
-import type { Project } from "@/lib/projects"
+import { projects, type Project } from "@/lib/projects"
 import Link from "next/link"
-
-const projects: Project[] = [
-  {
-    id: "1",
-    title: "Neuhaus Centenera 740",
-    description:
-      "Un edificio residencial de diseño contemporáneo implantado en la mejor zona de Caballito, a metros de Pedro Goyena y a tres cuadras del Parque Chacabuco.",
-    image: "/CenteneraFrente.jpeg",
-    category: "Residencial",
-    year: "2022 - 2025",
-    status: "Terminado",
-  },
-  {
-    id: "2",
-    title: "Neuhaus Directorio 1290",
-    description:
-      "El edificio combina calidad y bienestar en cada detalle, con ambientes luminosos, materiales nobles y un diseño pensado para la vida cotidiana.",
-    image: "/12901.jpeg",
-    category: "Residencial",
-    year: "2025 - 2028",
-    status: "Excavacion y Fundaciones",
-  },
-  {
-    id: "3",
-    title: "Neuhaus Directorio 1302",
-    description:
-      "En una esquina estratégica, ofrece el equilibrio justo entre confort, conectividad y la tranquilidad de un barrio con identidad.",
-    image: "/1302Exterior3.jpg",
-    category: "Residencial",
-    year: "2025 - 2028",
-    status: "Demolición",
-  },
-]
 
 export function ProjectsSection() {
   return (
