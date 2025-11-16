@@ -20,6 +20,10 @@ export interface Project {
       image: string
     }[]
     typologyTypes?: string
+    amenitiesInfo?: {
+      image: string
+      title: string
+    }[]
   }
 }
 
@@ -52,7 +56,17 @@ export const projects: Project[] = [
           image: "/tipologias/3amb.jpg"
         }
       ],
-      typologyTypes: "1 y 3 ambientes"
+      typologyTypes: "1 y 3 ambientes",
+      amenitiesInfo: [
+        {
+          image: "/tipologias/3amb.jpg",
+          title: "Cowork"
+        },
+        {
+          image: "/tipologias/3amb.jpg",
+          title: "SUM Interior"
+        }
+      ]
     },
   },
   {

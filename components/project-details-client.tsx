@@ -1,3 +1,5 @@
+// Refactored ProjectDetailsClient with 2/3 + 1/3 layout in desktop for Resumen tab
+
 "use client"
 
 import { useState } from "react"
@@ -44,10 +46,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
               </Button>
             </Link>
 
-            {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Image
-                src="/logo.png" // ajustá la ruta según tu estructura
+                src="/logo.png"
                 alt="Neuhaus Real Estate"
                 width={160}
                 height={40}
@@ -88,8 +89,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${index === currentImageIndex ? "bg-white" : "bg-white/50"
-                      }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentImageIndex ? "bg-white" : "bg-white/50"
+                    }`}
                   />
                 ))}
               </div>
@@ -104,7 +106,9 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
               <Badge
                 variant={project.status === "Completado" ? "default" : "outline"}
                 className={
-                  project.status === "Completado" ? "bg-green-600 text-white" : "border-green-400 text-green-200"
+                  project.status === "Completado"
+                    ? "bg-green-600 text-white"
+                    : "border-green-400 text-green-200"
                 }
               >
                 {project.status}
@@ -118,32 +122,33 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
       {/* Project Details */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Tabs Section (Left Side) */}
-            <div className="lg:col-span-2">
-              <Tabs defaultValue="resumen" className="text-white">
-                <TabsList className="bg-white mb-6 rounded-xl p-1">
-                  <TabsTrigger
-                    value="resumen"
-                    className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
-                  >
-                    Resumen
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="tipologias"
-                    className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
-                  >
-                    Tipologías
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="amenities"
-                    className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
-                  >
-                    Amenities
-                  </TabsTrigger>
-                </TabsList>
+          <Tabs defaultValue="resumen" className="text-white">
+            <TabsList className="bg-white mb-6 rounded-xl p-1">
+              <TabsTrigger
+                value="resumen"
+                className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+              >
+                Resumen
+              </TabsTrigger>
+              <TabsTrigger
+                value="tipologias"
+                className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+              >
+                Tipologías
+              </TabsTrigger>
+              <TabsTrigger
+                value="amenities"
+                className="cursor-pointer data-[state=active]:bg-primary data-[state=active]:text-white text-primary rounded-lg px-4 py-2 transition-colors"
+              >
+                Amenities
+              </TabsTrigger>
+            </TabsList>
 
-                <TabsContent value="resumen">
+            {/* RESUMEN → 2/3 + 1/3 layout on desktop */}
+            <TabsContent value="resumen">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                {/* Left (2/3) */}
+                <div className="lg:col-span-2">
                   <div className="mb-8">
                     <h2 className="text-3xl font-bold text-white mb-4">Descripción del Proyecto</h2>
                     <p className="text-lg text-green-200 leading-relaxed">
@@ -151,23 +156,8 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                     </p>
                   </div>
 
-                  {/* {project.details?.features && (
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-white mb-4">Características Principales</h3>
-                      <ul className="space-y-2">
-                        {project.details.features.map((feature, index) => (
-                          <li key={index} className="flex items-start">
-                            <div className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <span className="text-green-200">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )} */}
-
                   <div className="flex flex-col items-start gap-4">
                     <h3 className="text-2xl font-bold text-white">Brochure del Proyecto</h3>
-
                     {project.details?.brochure ? (
                       <a href={project.details.brochure} target="_blank" rel="noopener noreferrer">
                         <Button className="bg-white text-primary hover:bg-emerald-700 hover:text-white cursor-pointer">
@@ -178,119 +168,145 @@ export function ProjectDetailsClient({ project }: ProjectDetailsClientProps) {
                       <p className="text-gray-300 italic">Este proyecto aún no tiene brochure disponible.</p>
                     )}
                   </div>
-                </TabsContent>
+                </div>
 
-                <TabsContent value="tipologias">
-                  {project.details?.typologies && project.details.typologies.length > 0 ? (
-                    <div className="space-y-8">
-                      {project.details.typologies.map((typology, index) => (
-                        <div key={index} className="flex flex-col items-start gap-4">
-                          <div className="w-full overflow-hidden rounded-xl">
-                            <img
-                              src={typology.image}
-                              className="w-full h-auto object-cover rounded-xl shadow-lg"
-                            />
+                {/* Right (1/3) */}
+                <div className="lg:col-span-1">
+                  <Card className="bg-emerald-800 border-green-700">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-6">Información del Proyecto</h3>
+
+                      <div className="space-y-4">
+                        {project.details?.location && (
+                          <div className="flex items-start">
+                            <MapPin className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Ubicación</div>
+                              <div className="text-white">{project.details.location}</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {project.details?.area && (
+                          <div className="flex items-start">
+                            <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Superficie total</div>
+                              <div className="text-white">{project.details.area}</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {project.details?.stories && (
+                          <div className="flex items-start">
+                            <Layers2 className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Pisos</div>
+                              <div className="text-white">{project.details.stories}</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {project.details?.units && (
+                          <div className="flex items-start">
+                            <Key className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Unidades</div>
+                              <div className="text-white">{project.details.units}</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {project.details?.typologyTypes && (
+                          <div className="flex items-start">
+                            <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Tipologías</div>
+                              <div className="text-white">{project.details.typologyTypes}</div>
+                            </div>
+                          </div>
+                        )}
+
+                        {project.details?.amenities && (
+                          <div className="flex items-start">
+                            <BookmarkPlus className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                            <div>
+                              <div className="text-sm text-green-300">Amenities</div>
+                              <ul>
+                                {project.details.amenities.map((a, index) => (
+                                  <li className="text-white" key={index}>
+                                    {a}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="flex items-start">
+                          <Calendar className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
+                          <div>
+                            <div className="text-sm text-green-300">Plazo de ejecución</div>
+                            <div className="text-white">{project.year}</div>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-green-200 italic">Este proyecto aún no tiene tipologías disponibles.</div>
-                  )}
-                </TabsContent>
-
-
-                <TabsContent value="amenities">
-                  <div className="text-green-200 italic">Contenido de amenities próximamente...</div>
-                </TabsContent>
-              </Tabs>
-            </div>
-
-            {/* Sidebar (Right Side) */}
-            <div className="lg:col-span-1">
-              <Card className="bg-emerald-800 border-green-700">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-6">Información del Proyecto</h3>
-
-                  <div className="space-y-4">
-                    {project.details?.location && (
-                      <div className="flex items-start">
-                        <MapPin className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Ubicación</div>
-                          <div className="text-white">{project.details.location}</div>
-                        </div>
                       </div>
-                    )}
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </TabsContent>
 
-                    {project.details?.area && (
-                      <div className="flex items-start">
-                        <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Superficie total</div>
-                          <div className="text-white">{project.details.area}</div>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.details?.stories && (
-                      <div className="flex items-start">
-                        <Layers2 className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Pisos</div>
-                          <div className="text-white">{project.details.stories}</div>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.details?.units && (
-                      <div className="flex items-start">
-                        <Key className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Unidades</div>
-                          <div className="text-white">{project.details.units}</div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {project.details?.typologyTypes && (
-                      <div className="flex items-start">
-                        <Ruler className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Tipologias</div>
-                          <div className="text-white">{project.details.typologyTypes}</div>
-                        </div>
-                      </div>
-                    )}
-
-                    {project.details?.amenities && (
-                      <div className="flex items-start">
-                        <BookmarkPlus className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="text-sm text-green-300">Amenities</div>
-                          <ul>
-                            {project.details.amenities.map((a, index) => (
-                              <li className="text-white" key={index}>
-                                {a}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="flex items-start">
-                      <Calendar className="h-5 w-5 text-green-400 mt-0.5 mr-3 flex-shrink-0" />
-                      <div>
-                        <div className="text-sm text-green-300">Plazo de ejecución</div>
-                        <div className="text-white">{project.year}</div>
+            <TabsContent value="tipologias">
+              {project.details?.typologies && project.details.typologies.length > 0 ? (
+                <div className="space-y-8">
+                  {project.details.typologies.map((typology, index) => (
+                    <div key={index} className="flex flex-col items-start gap-4">
+                      <div className="w-full overflow-hidden rounded-xl">
+                        <img
+                          src={typology.image}
+                          className="w-full h-auto object-cover rounded-xl shadow-lg"
+                        />
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-green-200 italic">Este proyecto aún no tiene tipologías disponibles.</div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="amenities">
+  {project.details?.amenitiesInfo && project.details.amenitiesInfo.length > 0 ? (
+    <div className="space-y-12">
+      {project.details.amenitiesInfo.map((amenity, index) => (
+        <div key={index} className="flex flex-col items-start gap-4">
+          
+          {/* Título del amenity */}
+          <h3 className="text-2xl font-bold text-white">
+            {amenity.title}
+          </h3>
+
+          {/* Imagen del amenity */}
+          <div className="w-full overflow-hidden rounded-xl">
+            <img
+              src={amenity.image}
+              alt={amenity.title}
+              className="w-full h-auto object-cover rounded-xl shadow-lg"
+            />
           </div>
+
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div className="text-green-200 italic">
+      Este proyecto aún no tiene amenities disponibles.
+    </div>
+  )}
+</TabsContent>
+
+          </Tabs>
         </div>
       </section>
     </div>
