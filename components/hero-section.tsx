@@ -5,9 +5,17 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 
 const images = [
-  "/Hero.jpg",
-  "/1302Interior1.jpg",
-  "/Centenera4.jpeg",
+  "/hero/hero1.jpg",
+  "/hero/hero2.jpg",
+  "/hero/hero3.jpg",
+  "/hero/hero4.jpg",
+  "/hero/hero5.jpg",
+  "/hero/hero6.jpg",
+  "/hero/hero7.jpg",
+  "/hero/hero8.jpg",
+  "/hero/hero9.jpg",
+  "/hero/hero10.jpg",
+  "/hero/hero11.jpg",
 ]
 
 export function HeroSection() {
