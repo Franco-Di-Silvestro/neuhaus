@@ -72,7 +72,7 @@ export function Footer() {
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/60">
-            © 2025 Neuhaus Real Estate. Todos los derechos reservados. | Diseñado con precisión y pasión.
+            © 2026 Neuhaus Real Estate. Todos los derechos reservados. | Diseñado con precisión y pasión.
           </p>
         </div>
       </div>
