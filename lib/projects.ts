@@ -85,7 +85,7 @@ export const projects: Project[] = [
     description: "El edificio combina calidad y bienestar en cada detalle, con ambientes luminosos, materiales nobles y un diseño pensado para la vida cotidiana. Semipisos premium de 2 ambientes, local comercial en planta baja y un rooftop de 3 ambientes con vistas panorámicas y espacios para disfrutar al aire libre.",
     image: "/projects/dir1290.jpeg",
     category: "Residencial",
-    year: "2025 - 2028",
+    year: "2025 - 2027",
     status: "Excavación y Fundaciones",
     details: {
       location: "Caballito, Ciudad de Buenos Aires",
